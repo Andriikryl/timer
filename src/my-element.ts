@@ -1,5 +1,6 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, } from 'lit/decorators.js'
+import "./components/timer-form"
 
 /**
  * An example element.
@@ -12,14 +13,14 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <div>
-      asd
-      <div/>
+      <main>
+          <timer-form></timer-form>
+      </main>
+    
     `
   }
 
   static styles = css`
-
   `
 }
 
