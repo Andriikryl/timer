@@ -1,6 +1,11 @@
 // my-timer.ts
 import { LitElement, html, css } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, property, state } from 'lit/decorators.js';
+
+interface TimerListTypes {
+    number: number
+  }
+
 
 @customElement('stop-watch')
 export class MyStopwatch extends LitElement {
@@ -12,6 +17,7 @@ export class MyStopwatch extends LitElement {
 
   @state() private elapsedTime = 0;
   @state() private startTime: number | null = null;
+  @property({type: Array}) _timerList: TimerListTypes[] = [];
 
   render() {
     const seconds = Math.floor(this.elapsedTime / 1000);
@@ -22,6 +28,11 @@ export class MyStopwatch extends LitElement {
         ${this.startTime? html`<button @click=${this.stop}>stop</button>` : html`<button @click=${this.start}>start</button>`}
         <button @click=${this.reset}>reset</button>
       </div>
+      <ul>
+      ${this._timerList.map((item) =>
+    html`<li>${item.number}</li>`
+  )}
+      </ul>
     `;
   }
 
@@ -33,6 +44,8 @@ export class MyStopwatch extends LitElement {
   }
 
   stop() {
+    const elapsedTimeWhenStopped = Date.now() - this.startTime!;
+    this._timerList = [...this._timerList, {number: elapsedTimeWhenStopped}];
     this.startTime = null;
   }
 
