@@ -1,0 +1,146 @@
+:root {
+	--white: #fff;
+	--gray-1: #eee;
+	--gray-2: #d8d8d8;
+	--gray-3: #b4b4b4;
+	--gray-4: #929292;
+	--gray-5: #696969;
+	--gray-6: #454545;
+	--black: #1b1b1b;
+	--accent-red: #e12b56;
+	--accent-orange: #fa9248;
+	--accent-dandelion: #ffde75;
+	--accent-inchworm: #bce051;
+	--accent-green: #4da764;
+	--accent-caribbean-green: #37d4ad;
+	--accent-blue-green: #2799b2;
+	--accent-blue-iii: #2b71db;
+	--accent-purple-heart: #633da2;
+	--accent-pink-flamingo: #ea82eb;
+	--accent-razzmatazz: #e23274;
+	--accent-light-red: #fff0f4;
+	--accent-light-orange: #ffeadb;
+	--accent-light-dandelion: #fff5d3;
+	--accent-light-inchworm: #f1fbd2;
+	--accent-light-green: #e1fbe7;
+	--accent-light-caribbean-green: #dafcf3;
+	--accent-light-blue-green: #e6f9fe;
+	--accent-light-blue-iii: #edf4ff;
+	--accent-light-purple-heart: #f6f0ff;
+	--accent-light-pink-flamingo: #ffefff;
+	--accent-light-razzmatazz: #fff0f6;
+	--more-notification-color: #e05757;
+	--more-figma-variant: #9747ff;
+	--more-dot-grid-background: #fff;
+}
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+  }
+
+main{
+  z-index: 20;
+}
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, h5, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, h5
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4, h5 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+a{
+  text-decoration: none;
+}
+
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+.wrapper{
+    --gap: clamp(1rem, 6vw, 3rem);
+    --full: minmax(var(--gap), 1fr);
+    --content: min(90ch, 100% - var(--gap) * 2);
+    --popout: minmax(0, 2rem);
+    --feature: minmax(0, 15rem);
+    display: grid;
+    grid-template-columns:
+      [full-start] var(--full)
+      [feature-start] var(--feature)
+      [popout-start] var(--popout)
+      [content-start] var(--content) [content-end]
+      var(--popout) [popout-end]
+      var(--feature) [feature-end]
+      var(--full) [full-end];
+}
+
+.wrapper > * {
+    grid-column: content;
+  }
+  .popout {
+    grid-column: popout;
+  }
+  .feature {
+    grid-column: feature;
+  }
+  .full {
+    grid-column: full;
+  }
+ 
